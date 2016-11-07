@@ -1,1 +1,2 @@
-nosetests
+nosetests --with-coverage
+codecov
