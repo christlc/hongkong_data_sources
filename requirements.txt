@@ -3,5 +3,4 @@ pandas
 nose
 requests
 lxml
-coverage
 html5lib
