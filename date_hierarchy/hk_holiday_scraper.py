@@ -18,18 +18,17 @@ def get_year_holiday(year):
     url = 'http://www.gov.hk/en/about/abouthk/holiday/%s.htm' % year
     response = requests.get(url, headers=headers)
     df = pd.read_html(StringIO(response.content), 'Every Sunday')[0]
-    df.columns = ['Description', 'Date', 'Day_of_Week']
+    df.columns = ['Holiday_Description', 'Date', 'Day_of_Week']
     df['Year'] = year
     return df
 
 
-output = [get_year_holiday(i) for i in range(2007, 2017)]
-
-df = pd.concat(output)
-
-# remove 'Every Sunday'
-df = df[df['Description']<>'Every Sunday'].copy()
-df['String_Date'] = df['Date'] + df['Year'].map(str)
-df['Date'] = df['String_Date'].map(lambda x: datetime.strptime(x, '%d %B%Y'))
-
-df.to_csv(os.path.join('output', 'holiday.csv'))
+if __name__=='__main__':
+    output = [get_year_holiday(i) for i in range(2007, 2017)]
+    df = pd.concat(output)
+    # remove 'Every Sunday'
+    df = df[df['Holiday_Description']<>'Every Sunday'].copy()
+    df['String_Date'] = df['Date'] + df['Year'].map(str)
+    df['Date'] = df['String_Date'].map(lambda x: datetime.strptime(x, '%d %B%Y'))
+    print(df)
+    df.to_csv(os.path.join('output', 'holiday.csv'), encoding='utf8')
