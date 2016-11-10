@@ -11,6 +11,12 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleW
 
 
 def get_year_holiday(year, sleep_seconds=5):
+    """
+
+    :param year: the year when the scraping begins
+    :param sleep_seconds: number of seconds paused in between
+    :return: scraped holiday
+    """
     # Sleep to scrape responsibly
     time.sleep(sleep_seconds)
     logger.info("Scraping %i" % year)
@@ -28,6 +34,12 @@ def get_year_holiday(year, sleep_seconds=5):
 
 
 def get_years_holiday(from_year, to_year):
+    """
+
+    :param from_year: holidays from this year
+    :param to_year: obtain holidays until this year-1
+    :return: return a data frame with holidays
+    """
     output = [get_year_holiday(i) for i in range(from_year, to_year)]
     df = pd.concat(output)
     return df

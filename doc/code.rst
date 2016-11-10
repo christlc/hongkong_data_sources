@@ -1,7 +1,7 @@
 Documentation for the Code
 **************************
 
-.. automodule:: pandas
+.. automodule:: hk_data_sources
 
 
 useful #1 -- auto members

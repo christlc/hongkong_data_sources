@@ -6,6 +6,12 @@ START_YEAR = 2007
 END_YEAR = pd.datetime.today().year+1
 
 def get_date_hierarchy(start_year=START_YEAR, end_year=END_YEAR):
+    """
+
+    :param start_year: cannot be before than 2007, default is 2007
+    :param end_year: e.g. default is current year+1
+    :return: date hierarchy matrix from start_year to end_year-1
+    """
     df = pd.DataFrame()
     df['Day'] = pd.date_range(str(start_year), str(end_year), closed='left')
     df['Month'] = df.Day.map(lambda x: "%d-%02d" % (x.year, x.month))
