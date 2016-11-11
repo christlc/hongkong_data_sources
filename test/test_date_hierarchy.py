@@ -1,5 +1,5 @@
-from .. date_hierarchy import generate_date_hierarchy as gen_date_hier
-from .. date_hierarchy import hk_holiday_scraper as holiday_scraper
+from .. hk_data_sources.date_hierarchy import generate_date_hierarchy as gen_date_hier
+from .. hk_data_sources.date_hierarchy import hk_holiday_scraper as holiday_scraper
 
 
 def test_get_years_holidays():
